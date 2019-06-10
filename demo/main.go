@@ -3,13 +3,20 @@ package main
 import (
 	"log"
 	"net/url"
+	"os"
 	"time"
 
 	"cgv"
 	"github.com/athurg/wechat_work_sdk"
+	"github.com/tencentyun/scf-go-lib/cloudfunction"
 )
 
 func main() {
+	if _, ok := os.LookupEnv("TENCENTCLOUD_RUNENV"); ok {
+		cloudfunction.Start(fetchAndNotify)
+		return
+	}
+
 	fetchAndNotify()
 }
 
