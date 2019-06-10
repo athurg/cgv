@@ -20,6 +20,11 @@ type CommonResponse struct {
 	ErrorCode        int
 }
 
+//返回CGV官网指定路径的完整URL
+func WrapPath(path string) string {
+	return CgvAddr + path
+}
+
 func request(method, path string, p url.Values, reqInfo interface{}, respInfo interface{}) error {
 	var body io.Reader
 	if reqInfo != nil {

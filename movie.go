@@ -1,6 +1,7 @@
 package cgv
 
 import (
+	"fmt"
 	"net/url"
 )
 
@@ -13,6 +14,11 @@ type Movie struct {
 	MOV_TYP_CD  string
 	MOV_ENG_NM  string
 	FILE_PATH   string
+}
+
+//返回指定影片的CGV官网页面URL
+func MovieDetailUrl(movieCode string) string {
+	return fmt.Sprintf("%s/movieDetail/gotoMovieDetail.fo?MOV_CD=", CgvAddr, movieCode)
 }
 
 func MoviesByThat(thatCode string) ([]Movie, error) {

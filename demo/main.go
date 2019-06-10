@@ -34,7 +34,6 @@ func fetchAndNotify() {
 
 	log.Printf("影院信息%+v", cinema)
 
-
 	//获取所有影片信息
 	movies, err := cgv.MoviesByThat(cinema.THAT_CD)
 
@@ -52,8 +51,8 @@ func fetchAndNotify() {
 func checkMovie(cinemaCode string, movie cgv.Movie) {
 	movie.MOV_NM, _ = url.QueryUnescape(movie.MOV_NM)
 
-	picUrl := "http://www.cgv.com.cn" + movie.FILE_PATH
-	detailUrl := "http://www.cgv.com.cn/movieDetail/gotoMovieDetail.fo?MOV_CD=" + movie.MOV_CD
+	picUrl := cgv.WrapPath(movie.FILE_PATH)
+	detailUrl := cgv.MovieDetailUrl(movie.MOV_CD)
 
 	//获取影片排片日期信息，以确保是否当日正在上映
 	dateList, err := cgv.ScheduleDateByCinemaMovie(cinemaCode, movie.MOV_CD)
