@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"cgv"
+	"github.com/athurg/cgv"
 	"github.com/athurg/wechat_work_sdk"
 	"github.com/tencentyun/scf-go-lib/cloudfunction"
 )
