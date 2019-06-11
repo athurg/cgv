@@ -1,4 +1,4 @@
-module github.com/athurg/cgv
+module github.com/go-http/cgv
 
 go 1.12
 
