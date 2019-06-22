@@ -1,8 +1,4 @@
-github.com/athurg/wechat_work_sdk v0.0.0-20190610071448-929427c279ad h1:vAod2djwwvoVdzT2cq6ZfwsFlXeGaronqYn+dOCPjlQ=
-github.com/athurg/wechat_work_sdk v0.0.0-20190610071448-929427c279ad/go.mod h1:uj9Po5fjKcMfKQLlCTKk+Q/advp/YwDhtAQrLyX/3B4=
-github.com/athurg/wechat_work_sdk v0.0.0-20190610073118-ebe022d773f0 h1:epzSPtde1Udgymc1vBAt/oFQjn8qEyeVxh6dIMMPuo0=
-github.com/athurg/wechat_work_sdk v0.0.0-20190610073118-ebe022d773f0/go.mod h1:uj9Po5fjKcMfKQLlCTKk+Q/advp/YwDhtAQrLyX/3B4=
-github.com/athurg/wechat_work_sdk v0.0.0-20190610093211-a198fd59fc8e h1:xCaRutYLIe3DkZXEEoWhBwKh1LMQLmmu1eDQ7TEMHiQ=
-github.com/athurg/wechat_work_sdk v0.0.0-20190610093211-a198fd59fc8e/go.mod h1:uj9Po5fjKcMfKQLlCTKk+Q/advp/YwDhtAQrLyX/3B4=
+github.com/go-http/wechat_work v0.0.0-20190616100512-eac796658455 h1:mNHSl1iPvX7X+2XTlGJHbPui4VYKNRMX9ClFG1wK4XE=
+github.com/go-http/wechat_work v0.0.0-20190616100512-eac796658455/go.mod h1:jh3p/9B+ah+kUPxWlLP05UbM3IIqdWbS4AKh8OnYcN8=
 github.com/tencentyun/scf-go-lib v0.0.0-20190226080708-b26c1e4b5808 h1:95J2/QmVGZFs113jeHqlvqdRAxpU/zw9vhktNUHZDlo=
 github.com/tencentyun/scf-go-lib v0.0.0-20190226080708-b26c1e4b5808/go.mod h1:K3DbqPpP2WE/9MWokWWzgFZcbgtMb9Wd5CYk9AAbEN8=
