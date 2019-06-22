@@ -36,6 +36,7 @@ func fetchAndNotify() {
 
 	//获取所有影片信息
 	movies, err := cgv.MoviesByThat(cinema.THAT_CD)
+	log.Printf("影片信息%+v", movies)
 
 	var wg sync.WaitGroup
 	for _, movie := range movies {
