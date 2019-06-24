@@ -36,7 +36,7 @@ type Schedule struct {
 	MOV_CPT_LAG_CD string //01
 	MOV_FMT        string
 	MOV_FMT_CD     string
-	MOV_TYP_CD     string // 影片类型代码
+	MOV_TYP_CD     string //影片类型代码
 	MOV_TYP        string //影片类型
 
 	SIMG_URL        string
