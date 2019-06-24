@@ -84,7 +84,7 @@ func checkMovie(cinemaCode string, movie cgv.Movie) {
 		return
 	}
 
-	var screenTime, screenType string
+	var screenTime string
 	times := make([]string, 0, len(schedules))
 	for _, s := range schedules {
 		s.SCN_FR_TM, _ = url.QueryUnescape(s.SCN_FR_TM)
