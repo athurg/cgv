@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/url"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -36,6 +37,8 @@ func fetchAndNotify() {
 	//获取所有影片信息
 	movies, err := cgv.MoviesByThat(cinema.THAT_CD)
 	log.Printf("影片信息%+v", movies)
+
+	wechatClient.SendTextToUsers("今日影片提醒", os.Getenv("RECEIVERS"))
 
 	var wg sync.WaitGroup
 	for _, movie := range movies {
@@ -74,24 +77,26 @@ func checkMovie(cinemaCode string, movie cgv.Movie) {
 		return
 	}
 
-	message := wechat.NewNewsMessage()
-	message.Append(movie.MOV_NM, detailUrl, "", picUrl)
-
 	//获取当日排片表
 	schedules, err := cgv.ScheduleInfoToday(cinemaCode, movie.MOV_CD)
 	if err != nil {
-		message.Append(movie.MOV_NM, detailUrl, err.Error(), "")
+		//message.Append(movie.MOV_NM, detailUrl, err.Error(), "")
 		return
 	}
 
+	var screenTime, screenType string
+	times := make([]string, 0, len(schedules))
 	for _, s := range schedules {
-		s.SCREEN_NM, _ = url.QueryUnescape(s.SCREEN_NM)
 		s.SCN_FR_TM, _ = url.QueryUnescape(s.SCN_FR_TM)
-		s.SCN_TO_TM, _ = url.QueryUnescape(s.SCN_TO_TM)
-		message.Append(s.SCN_FR_TM+"～"+s.SCN_TO_TM+"，"+s.SCREEN_NM, "", "", "")
+		screenTime, _ = url.QueryUnescape(s.SCN_TM)
+		times = append(times, s.SCN_FR_TM)
 	}
 
-	_, err = wechatClient.SendBatchNewsMessageToUsers(message, "@all")
+	detail := "播放时长：" + screenTime + "分钟"
+	detail += "\n上映时间：" + strings.Join(times, "、")
+	message := wechat.NewNewsMessage()
+	message.Append(movie.MOV_NM, detailUrl, detail, picUrl)
+	_, err = wechatClient.SendBatchNewsMessageToUsers(message, os.Getenv("RECEIVERS"))
 	if err != nil {
 		log.Println("发送消息错误", err)
 	}
