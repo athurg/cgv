@@ -13,7 +13,6 @@ import (
 )
 
 var wechatClient *wechat.AgentClient
-var screenDay = time.Now().Format("2006-01-02")
 
 func main() {
 	if _, ok := os.LookupEnv("TENCENTCLOUD_RUNENV"); ok {
@@ -62,6 +61,7 @@ func checkMovie(cinemaCode string, movie cgv.Movie) {
 		return
 	}
 
+	screenDay := time.Now().Format("2006-01-02")
 	var isTodayShow bool
 	for _, date := range dateList {
 		if date.SCN_DY == screenDay {
